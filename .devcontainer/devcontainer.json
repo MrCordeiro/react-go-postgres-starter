@@ -1,0 +1,106 @@
+// For format details, see https://containers.dev/implementors/json_reference/
+{
+  "name": "my_project_dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "mounts": [
+    {
+      "source": "./bash_history",
+      "target": "/home/dev-user/.bash_history",
+      "type": "bind"
+    }
+  ],
+  "remoteUser": "dev-user",
+  "workspaceFolder": "/app",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {},
+		"ghcr.io/devcontainers/features/go:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers-contrib/features/jest:2": {},
+		"ghcr.io/devcontainers-contrib/features/mocha:2": {}
+	},
+
+  // Set *default* container specific settings.json values on container create.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+          89,
+          120
+        ],
+        "workbench.colorCustomizations": {
+          "activityBar.activeBackground": "#0ccfff",
+          "activityBar.background": "#0ccfff",
+          "activityBar.foreground": "#15202b",
+          "activityBar.inactiveForeground": "#15202b99",
+          "activityBarBadge.background": "#df00b3",
+          "activityBarBadge.foreground": "#e7e7e7",
+          "commandCenter.border": "#e7e7e799",
+          "sash.hoverBorder": "#0ccfff",
+          "statusBar.background": "#00add8",
+          "statusBar.foreground": "#e7e7e7",
+          "statusBarItem.hoverBackground": "#0ccfff",
+          "statusBarItem.remoteBackground": "#00add8",
+          "statusBarItem.remoteForeground": "#e7e7e7",
+          "titleBar.activeBackground": "#00add8",
+          "titleBar.activeForeground": "#e7e7e7",
+          "titleBar.inactiveBackground": "#00add899",
+          "titleBar.inactiveForeground": "#e7e7e799"
+        },
+        "peacock.color": "#00ADD8"
+      },
+      "extensions": [
+        "4ops.terraform",
+        "aaron-bond.better-comments",
+        "ahmadawais.emoji-log-vscode",
+        "ban.spellright",
+        "bierner.markdown-mermaid",
+        "christian-kohler.npm-intellisense",
+        "dart-code.dart-code",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "donjayamanne.githistory",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "formulahendry.code-runner",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.remotehub",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "golang.go",
+        "gruntfuggly.todo-tree",
+        "jock.svg",
+        "johnpapa.vscode-peacock",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode-remote.remote-wsl",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-repositories",
+        "msjsdiag.vscode-react-native",
+        "panicofr.django-tester",
+        "pkief.material-icon-theme",
+        "tamasfe.even-better-toml",
+        "trond-snekvik.simple-rst",
+        "usernamehw.errorlens",
+        "vscode-icons-team.vscode-icons"
+      ]
+    }
+  },
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "cat .devcontainer/bashrc.override.sh >> ~/.bashrc"
+
+}
