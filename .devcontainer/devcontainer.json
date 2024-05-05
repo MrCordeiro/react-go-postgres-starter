@@ -1,30 +1,32 @@
 // For format details, see https://containers.dev/implementors/json_reference/
 {
   "name": "my_project_dev",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "../docker-compose.yml",
   "service": "app",
   "mounts": [
     {
       "source": "./bash_history",
       "target": "/home/dev-user/.bash_history",
       "type": "bind"
+    },
+    {
+      "source": "~/.ssh",
+      "target": "/home/dev-user/.ssh",
+      "type": "bind"
     }
   ],
   "remoteUser": "dev-user",
   "workspaceFolder": "/app",
-
   // Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers/features/aws-cli:1": {},
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/git-lfs:1": {},
-		"ghcr.io/devcontainers/features/go:1": {},
-		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/devcontainers-contrib/features/jest:2": {},
-		"ghcr.io/devcontainers-contrib/features/mocha:2": {}
-	},
-
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/go:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers-contrib/features/jest:2": {},
+    "ghcr.io/devcontainers-contrib/features/mocha:2": {}
+  },
   // Set *default* container specific settings.json values on container create.
   "customizations": {
     "vscode": {
@@ -102,5 +104,4 @@
   // "shutdownAction": "none",
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "cat .devcontainer/bashrc.override.sh >> ~/.bashrc"
-
 }

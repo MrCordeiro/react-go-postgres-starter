@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/go:1-1.22-bookworm
 
 ARG USERNAME=dev-user
-# Don't use UID 1000 to avoid conflicts with the default vscode user
+# Don't use UID 1000 to avoid conflicts with the default vscode user, from the
+# Microsoft base image
 ARG USER_UID=1001
 ARG USER_GID=$USER_UID
 ARG APP_HOME=/app
@@ -35,3 +36,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 WORKDIR ${APP_HOME}
 COPY . ${APP_HOME}
+
+# Give the devcontainer user ownership of the app folder
+RUN chown -R ${USERNAME}:${USERNAME} ${APP_HOME}
+
+# Set the default user
+USER $USERNAME
