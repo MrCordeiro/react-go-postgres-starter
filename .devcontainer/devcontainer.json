@@ -1,7 +1,10 @@
 // For format details, see https://containers.dev/implementors/json_reference/
 {
   "name": "my_project_dev",
-  "dockerComposeFile": "../docker-compose.yml",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.override.yml"
+  ],
   "service": "app",
   "mounts": [
     {
